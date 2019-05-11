@@ -31,7 +31,7 @@ class LightBoxWidget extends Widget
     public $data = null;
 
     /** @var string Type of content. */
-    public $type = null;
+    protected $type = null;
 
     /** @var array Options for view in plugin.
      * One item: thumb_class, src_class
@@ -39,15 +39,15 @@ class LightBoxWidget extends Widget
      */
     public $options = [];
 
+    protected $handler;
+
     /** @var array Plugin options. */
     public $plugin_options = [];
-
-    protected $generated_content;
 
     public function init()
     {
         $this->setData($this->data);
-        $this->setTypeOfContent($this->type);
+        $this->setTypeOfContent($this->data);
         LightboxAsset::register($this->getView());
         $this->setHandler();
     }
@@ -61,33 +61,38 @@ class LightBoxWidget extends Widget
         }
     }
 
-    protected function setTypeOfContent($type)
+    protected function setTypeOfContent($data)
     {
-        if(!empty($type) && $this->checkType($type)){
-            $this->type = $type;
+        if($this->checkDataOnContainArrays($data)){
+            return $this->type = self::GALLERY;
         }else{
-            throw new InvalidConfigException('Required `type` param incorrect.');
+            return $this->type = self::ONE_ITEM;
         }
     }
 
-    protected function checkType($type)
+    protected function checkDataOnContainArrays($data)
     {
-        switch ($type){
-            case self::ONE_ITEM:
-            case self::GALLERY: return true;
-            default: return false;
+        $arrays = 0;
+        foreach($data as $item){
+            if(is_array($item)){
+                $arrays++;
+            }else{
+                return false;
+            }
+            if($arrays > 1){
+                return true;
+            }
         }
     }
 
     protected function setHandler()
     {
         $handler_class = "san27079\BootstrapLightbox\\$this->type".'Handler';
-        $handler = new $handler_class;
-        $this->generated_content = $handler->getContent($this->data, $this->options, $this->plugin_options);
+        $this->handler = new $handler_class;
     }
 
     public function run()
     {
-        return $this->generated_content;
+        return $this->handler->getContent($this->data, $this->options, $this->plugin_options);
     }
 }

@@ -41,7 +41,10 @@ class GalleryHandler implements LightBoxHandler
                 $(this).ekkoLightbox(
                     ".$json_array."
                 );
+               
             });";
+        $css = '';
         Yii::$app->view->registerJs($js);
+        Yii::$app->view->registerCss($css);
     }
 }

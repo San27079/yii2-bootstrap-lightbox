@@ -58,6 +58,7 @@ class OneItemHandler implements LightBoxHandler
                 $(this).ekkoLightbox(
                     ".$json_array."
                 );
+              
             });";
         Yii::$app->view->registerJs($js);
     }

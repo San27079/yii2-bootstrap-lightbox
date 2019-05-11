@@ -7,7 +7,7 @@
 
     "authors": [
         {
-            "name": "Alexander",
+            "name": "Alexander Andreev",
             "email": "san27079@gmail.com"
         }
     ],
@@ -18,7 +18,8 @@
     },
     "autoload": {
         "psr-4": {
-            "san27079\\BootstrapLightbox\\": "src"
+            "san27079\\BootstrapLightbox\\": "src",
+            "san27079\\BootstrapLightbox\\tests\\": "tests/"
         }
     }
 }
