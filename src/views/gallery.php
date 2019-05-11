@@ -14,7 +14,7 @@
                 <a class="<?php echo(isset($options['src_class']) ? $options['src_class'] : ''); ?>"
                     href="<?php echo(isset($item['src']) ? $item['src'] : ''); ?>"
                     data-gallery="<?php echo $gallery_identifier; ?>"
-                    data-toggle="bootstrap-lightbox"
+                    data-toggle="bootstrap-lightbox-gallery"
                     <?php echo(isset($item['width']) ? 'data-width="' . $item['width'] . '"' : ''); ?>
                     <?php echo(isset($item['height']) ? 'data-height="' . $item['height'] . '"' : ''); ?>
                     data-title="<?php echo(isset($item['title']) ? $item['title'] : ''); ?>"

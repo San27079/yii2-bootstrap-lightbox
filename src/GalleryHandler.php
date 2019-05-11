@@ -36,7 +36,7 @@ class GalleryHandler implements LightBoxHandler
     protected function setPluginOptions(array $plugin_options)
     {
         $json_array = json_encode($plugin_options);
-        $js = "$(document).on('click', '[data-toggle=\"bootstrap-lightbox\"]', function(event) {
+        $js = "$(document).on('click', '[data-toggle=\"bootstrap-lightbox-gallery\"]', function(event) {
                 event.preventDefault();
                 $(this).ekkoLightbox(
                     ".$json_array."
