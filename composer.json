@@ -4,7 +4,7 @@
     "type": "yii2-extension",
     "keywords": ["yii2","extension","lightbox","bootstrap","bootstrap-lightbox"],
     "license": "MIT",
-    "minimum-stability":"stable",
+    "version": "0.1",
     "support": {
         "source": "https://github.com/San27079/yii2-bootstrap-lightbox"
     },
@@ -21,7 +21,7 @@
     },
     "autoload": {
         "psr-4": {
-            "san27079\\BootstrapLightbox\\": "src",
+            "san27079\\BootstrapLightbox\\": "src"
         }
     }
 }
